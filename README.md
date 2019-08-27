@@ -4,7 +4,8 @@ Because I forget.
 ## MNLI 
  - [Training](https://github.com/danyaljj/fairseq/blob/master/examples/roberta/README.glue.md) 
  - Model files: TODO 
- - [Inference and evaluation](https://github.com/danyaljj/fairseq/blob/master/examples/roberta/glue_inference.py).   
+ - [Inference and evaluation](https://github.com/danyaljj/fairseq/blob/master/examples/roberta/glue_inference.py).  
+ - Predictions: TODO 
  - Evaluation output:  
  ```
  loading archive file /Users/danielk/ideaProjects/fairseq/examples/roberta/mnli-checkpoints/
