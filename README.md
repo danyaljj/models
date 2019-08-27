@@ -7,26 +7,52 @@ Because I forget.
  - [Inference and evaluation](https://github.com/danyaljj/fairseq/blob/master/examples/roberta/glue_inference.py).  
  - [Predictions](https://github.com/danyaljj/fairseq/tree/master/examples/roberta/glue_data/MNLI/predictions)
  - Evaluation output:  
- ```
- loading archive file /Users/danielk/ideaProjects/fairseq/examples/roberta/mnli-checkpoints/
+ ```bash
+# Matched: 
+(env3.6) danielk@aristo-server2 ~/fairseq/examples/roberta $ python3 glue_inference.py
+loading archive file mnli-checkpoints/
 loading archive file MNLI-bin
 | [input] dictionary: 50265 types
 | [label] dictionary: 9 types
-201it [00:59,  3.69it/s]| Accuracy:  0.8910891089108911
+1042301B [00:00, 3931487.18B/s]
+456318B [00:00, 8495321.26B/s]
+| Accuracy:  0.9018848700967906
 
-loading archive file /Users/danielk/ideaProjects/fairseq/examples/roberta/mnli-checkpoints/
+
+# Mismatched: 
+(env3.6) danielk@aristo-server2 ~/fairseq/examples/roberta $ python3 glue_inference.py
+loading archive file mnli-checkpoints/
 loading archive file MNLI-bin
 | [input] dictionary: 50265 types
 | [label] dictionary: 9 types
-201it [01:05,  3.07it/s]
-| Accuracy:  0.8663366336633663 . # the overall score was actually higher (close to 90%). This is only on the first 200 instances. 
+| Accuracy:  0.899613506916192
+
  ```
  
 
 ## SNLI 
+ - Training: same as MNLI (above)
+ - [Model file](https://drive.google.com/drive/folders/1uv8IpJ_QEp-hUAThWUZ7gDBC1nGN5-p7?usp=sharing) 
+ - [Inference and predictions]
+ - Evaluation output: 
+
+```bash
+# dev 
+(env3.6) danielk@aristo-server2 ~/fairseq/examples/roberta/glue_data/SNLI-simplified $ python3 snli_inference.py
+loading archive file ../../snli-checkpoint/
+| [input] dictionary: 50265 types
+| [label] dictionary: 9 types
+| Accuracy:  0.9233895549685024
+
+# test 
+(env3.6) danielk@aristo-server2 ~/fairseq/examples/roberta/glue_data/SNLI-simplified $ python3 snli_inference.py 
+loading archive file ../../snli-checkpoint/
+| [input] dictionary: 50265 types
+| [label] dictionary: 9 types
+| Accuracy:  0.9178542345276873
+```
 
 ## BoolQ 
-
 
 ## SQuAD 1.1 
 
