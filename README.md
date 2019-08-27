@@ -62,6 +62,48 @@ loading archive file ../../snli-checkpoint/
 ```
 
 ## BoolQ 
+ - [Model](https://drive.google.com/drive/folders/1s7F__A3x5i29nJUyqxFKyyUsapugHpR_?usp=sharing) 
+ - Training script: 
+ ```bash 
+ TOTAL_NUM_UPDATES=3000  # 10 epochs through RTE for bsz 16
+WARMUP_UPDATES=180      # 6 percent of the number of updates
+LR=1e-05                # Peak LR for polynomial LR scheduler.
+NUM_CLASSES=2
+MAX_SENTENCES=16        # Batch size.
+ROBERTA_PATH=/home/danielk/fairseq/examples/roberta/roberta.large/model.pt
+
+
+CUDA_VISIBLE_DEVICES=0 python train.py /home/danielk/fairseq/examples/roberta/BoolQ-bin/ \
+    --restore-file $ROBERTA_PATH \
+    --max-positions 512 \
+    --max-sentences $MAX_SENTENCES \
+    --max-tokens 4400 \
+    --task sentence_prediction \
+    --reset-optimizer --reset-dataloader --reset-meters \
+    --required-batch-size-multiple 1 \
+    --init-token 0 --separator-token 2 \
+    --arch roberta_large \
+    --criterion sentence_prediction \
+    --num-classes $NUM_CLASSES \
+    --dropout 0.1 --attention-dropout 0.1 \
+    --weight-decay 0.1 --optimizer adam --adam-betas "(0.9, 0.98)" --adam-eps 1e-06 \
+    --clip-norm 0.0 \
+    --lr-scheduler polynomial_decay --lr $LR --total-num-update $TOTAL_NUM_UPDATES --warmup-updates $WARMUP_UPDATES \
+    --fp16 --fp16-init-scale 4 --threshold-loss-scale 1 --fp16-scale-window 128 \
+    --max-epoch 50 \
+    --find-unused-parameters \
+    --skip-invalid-size-inputs-valid-test \
+    --best-checkpoint-metric accuracy --maximize-best-checkpoint-metric;
+ ```
+ - [Evaluation and prediction files](https://github.com/danyaljj/fairseq/tree/master/examples/roberta/glue_data/BoolQ/predictions) 
+ - Output log: 
+```
+(env3.6) danielk@aristo-server2 ~/fairseq/examples/roberta/glue_data/BoolQ $ python3 boolq_inference.py
+loading archive file ../../boolq-checkpoint/
+| [input] dictionary: 50265 types
+| [label] dictionary: 9 types
+| Accuracy:  0.8234394124847001
+```
 
 ## SQuAD 1.1 
 
