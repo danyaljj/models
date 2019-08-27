@@ -3,6 +3,10 @@ Because I forget.
 
 ## MNLI 
  - [Training](https://github.com/danyaljj/fairseq/blob/master/examples/roberta/README.glue.md) 
+ - Training script: 
+ ```
+ CUDA_VISIBLE_DEVICES=6,7 python train.py /home/danielk/fairseq/examples/roberta/MNLI-bin/     --restore-file $ROBERTA_PATH     --max-positions 512     --max-sentences $MAX_SENTENCES     --max-tokens 4400     --task sentence_prediction     --reset-optimizer --reset-dataloader --reset-meters     --required-batch-size-multiple 1     --init-token 0 --separator-token 2     --arch roberta_large     --criterion sentence_prediction     --num-classes $NUM_CLASSES     --dropout 0.1 --attention-dropout 0.1     --weight-decay 0.1 --optimizer adam --adam-betas "(0.9, 0.98)" --adam-eps 1e-06     --clip-norm 0.0     --lr-scheduler polynomial_decay --lr $LR --total-num-update $TOTAL_NUM_UPDATES --warmup-updates $WARMUP_UPDATES     --fp16 --fp16-init-scale 4 --threshold-loss-scale 1 --fp16-scale-window 128     --max-epoch 10     --find-unused-parameters     --best-checkpoint-metric accuracy --maximize-best-checkpoint-metric;
+ ```
  - [Model files](https://drive.google.com/drive/folders/1ysmtlOJo7qGypLRqyJeHe_CoG6mgsAhl?usp=sharing)
  - [Inference and evaluation](https://github.com/danyaljj/fairseq/blob/master/examples/roberta/glue_inference.py).  
  - [Predictions](https://github.com/danyaljj/fairseq/tree/master/examples/roberta/glue_data/MNLI/predictions)
@@ -32,6 +36,11 @@ loading archive file MNLI-bin
 
 ## SNLI 
  - Training: same as MNLI (above)
+ - Training script: 
+ ```
+ CUDA_VISIBLE_DEVICES=6 python train.py /home/danielk/fairseq/examples/roberta/SNLI-simplified-bin/     --restore-file $ROBERTA_PATH     --max-positions 512     --max-sentences $MAX_SENTENCES     --max-tokens 4400     --task sentence_prediction     --reset-optimizer --reset-dataloader --reset-meters     --required-batch-size-multiple 1     --init-token 0 --separator-token 2     --arch roberta_large     --criterion sentence_prediction     --num-classes $NUM_CLASSES     --dropout 0.1 --attention-dropout 0.1     --weight-decay 0.1 --optimizer adam --adam-betas "(0.9, 0.98)" --adam-eps 1e-06     --clip-norm 0.0     --lr-scheduler polynomial_decay --lr $LR --total-num-update $TOTAL_NUM_UPDATES --warmup-updates $WARMUP_UPDATES     --fp16 --fp16-init-scale 4 --threshold-loss-scale 1 --fp16-scale-window 128     --max-epoch 40     --find-unused-parameters     --skip-invalid-size-inputs-valid-test     --best-checkpoint-metric accuracy --maximize-best-checkpoint-metric;
+ ```
+ 
  - [Model file](https://drive.google.com/drive/folders/1uv8IpJ_QEp-hUAThWUZ7gDBC1nGN5-p7?usp=sharing) 
  - [Inference and predictions]
  - Evaluation output: 
