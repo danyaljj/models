@@ -1,7 +1,7 @@
 # Models
 Because I forget.
 
-## MNLI: 
+## MNLI 
  - [Training](https://github.com/danyaljj/fairseq/blob/master/examples/roberta/README.glue.md) 
  - Model files: TODO 
  - [Inference and evaluation](https://github.com/danyaljj/fairseq/blob/master/examples/roberta/glue_inference.py).   
@@ -22,8 +22,15 @@ loading archive file MNLI-bin
  ```
  
 
-## SNLI: 
+## SNLI 
 
-- SQuAD 1.1 
+## BoolQ 
 
-- SQuAD 2.0 
+
+## SQuAD 1.1 
+
+## SQuAD 2.0 
+
+## SciTail 
+
+## 
